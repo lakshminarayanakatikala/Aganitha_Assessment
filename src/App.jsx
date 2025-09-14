@@ -28,8 +28,8 @@ function buildUrl(p = {}) {
   const parts = [];
   if (p.title) parts.push("title:" + esc(p.title));
   if (p.author) parts.push("author:" + esc(p.author));
-  if (p.subject) parts.push("subject:" + esc(p.subject));
-  if (p.language) parts.push("language:" + encodeURIComponent(p.language));
+  // if (p.subject) parts.push("subject:" + esc(p.subject));
+  // if (p.language) parts.push("language:" + encodeURIComponent(p.language));
   if (p.yearStart || p.yearEnd) {
     const s = p.yearStart || "*";
     const e = p.yearEnd || "*";
@@ -113,10 +113,10 @@ function SearchControls({ filters, setFilters, onSearch }) {
         >
           <option value="title">Title</option>
           <option value="author">Author</option>
-          <option value="subject">Subject</option>
-          <option value="language">Language</option>
+          {/* <option value="subject">Subject</option> */}
+          {/* <option value="language">Language</option> */}
           <option value="year">Year</option>
-          <option value="relevance">Relevance</option>
+          {/* <option value="relevance">Relevance</option> */}
         </select>
         <button className="primary" type="submit">Find Books</button>
       </div>
@@ -174,8 +174,8 @@ export default function App() {
     };
     if (filters.by === "title") p.title = filters.q;
     else if (filters.by === "author") p.author = filters.q;
-    else if (filters.by === "subject") p.subject = filters.q;
-    else if (filters.by === "language") p.language = filters.q;
+    // else if (filters.by === "subject") p.subject = filters.q;
+    // else if (filters.by === "language") p.language = filters.q;
     else if (filters.by === "year") {
       p.yearStart = filters.q;
       p.yearEnd = filters.q;

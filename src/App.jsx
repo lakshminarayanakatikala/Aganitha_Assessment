@@ -30,11 +30,11 @@ function buildUrl(p = {}) {
   if (p.author) parts.push("author:" + esc(p.author));
   // if (p.subject) parts.push("subject:" + esc(p.subject));
   // if (p.language) parts.push("language:" + encodeURIComponent(p.language));
-  if (p.yearStart || p.yearEnd) {
-    const s = p.yearStart || "*";
-    const e = p.yearEnd || "*";
-    parts.push(`first_publish_year:[${s} TO ${e}]`);
-  }
+  // if (p.yearStart || p.yearEnd) {
+  //   const s = p.yearStart || "*";
+  //   const e = p.yearEnd || "*";
+  //   parts.push(`first_publish_year:[${s} TO ${e}]`);
+  // }
   if (p.q) parts.push(p.q);
   if (parts.length) params.set("q", parts.join(" "));
   params.set("page", String(p.page || 1)); // page starts at 1
@@ -115,7 +115,7 @@ function SearchControls({ filters, setFilters, onSearch }) {
           <option value="author">Author</option>
           {/* <option value="subject">Subject</option> */}
           {/* <option value="language">Language</option> */}
-          <option value="year">Year</option>
+          {/* <option value="year">Year</option> */}
           {/* <option value="relevance">Relevance</option> */}
         </select>
         <button className="primary" type="submit">Find Books</button>
@@ -176,10 +176,10 @@ export default function App() {
     else if (filters.by === "author") p.author = filters.q;
     // else if (filters.by === "subject") p.subject = filters.q;
     // else if (filters.by === "language") p.language = filters.q;
-    else if (filters.by === "year") {
-      p.yearStart = filters.q;
-      p.yearEnd = filters.q;
-    }
+    // else if (filters.by === "year") {
+    //   p.yearStart = filters.q;
+    //   p.yearEnd = filters.q;
+    // }
     else p.q = filters.q;
     update(p);
     setFilters(prev => ({ ...prev, q: "" }));
